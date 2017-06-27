@@ -1,0 +1,25 @@
+<div>
+  <h2 align="center">Skills</h2>
+  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+    <!--Coding Languages Section-->
+    <div ng-repeat ="skill in skills.techSkills[0]">
+      <skills-directive level="skill.skillLevel" skill="skill.skillName"></skills-directive>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+    <!--Frameworks section-->
+    <div ng-repeat = "skill in skills.techSkills[1]">
+      <skills-directive level="skill.skillLevel" skill="skill.skillName"></skills-directive>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+    <!--Other technologies section-->
+    <div ng-repeat = "skill in skills.techSkills[2]">
+      <skills-directive level="skill.skillLevel" skill="skill.skillName"></skills-directive>
+    </div>
+  </div>
+</div>
+
+
+
+
