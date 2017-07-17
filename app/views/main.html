@@ -1,40 +1,18 @@
-<nav class="navbar navbar-default navbar-fixed-top main-menu" xmlns="http://www.w3.org/1999/html">
-  <div>
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="row navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
-      </button>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="row collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li class="menu-item"><a> Home </a></li>
-        <li class="menu-item"><a  href="#/about"> About me </a></li>
-        <li class="menu-item"><a> Skills</a></li>
-        <li class="menu-item"><a> Work experience </a></li>
-        <li class="menu-item"><a> Contact </a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div>
-</nav>
-
 <!-- Introduction Section-->
-<div class="row">
+<div id="sectionHome" class="row">
   <div class="introduction-text">
     <h1>Hello {{main.visitorName}}</h1>
     <p class="typewriter">
       My name is Javier Mora. How can I help you?
     </p>
     <div class="introduction-buttons">
-      <button class="download-button btn btn-lg btn-default"> Download CV </button>
-      <button class=" contact-me-button btn btn-lg btn-default"> Contact me </button>
+      <!-- TODO: Add download file-->
+      <a href="/files/CV_2017_Mora_Alcázar_Javier_english.pdf"><button class="download-button btn btn-lg btn-default" download> Download CV </button></a>
+      <button class="contact-me-button btn btn-lg btn-default" ng-click="main.goToAnchor('Contact')"> Contact me </button>
     </div>
   </div>
   <video autoplay muted loop scroll>
-    <source src="/videos/MVI_5669.mp4" type="video/mp4">
+    <source src="/videos/722781729.mp4" type="video/mp4">
     I'm sorry; your browser doesn't support HTML5 video.
   </video>
 </div>
@@ -46,46 +24,55 @@
   </div>
 </div>
 
-<!--&lt;!&ndash; Soft Skills Section&ndash;&gt;-->
+<!-- Soft Skills Section-->
 
-<!--<div class="row soft-skills-section">-->
-  <!--<ul id="techList">-->
-    <!--<li id="creativity">Creativity</li>-->
-    <!--<li id="work-under-pressure"> Work under pressure</li>-->
-    <!--<li id="seo"> SEO </li>-->
-    <!--<li id="sem"> SEM </li>-->
-    <!--<li id="entrepreneurship"> Entrepreneurship </li>-->
-    <!--<li id="accessibility"> Accessibility</li>-->
-    <!--<li id="web-standards"> Web standards</li>-->
-    <!--<li id="analytics"> Analytics </li>-->
-  <!--</ul>-->
-<!--</div>-->
+<div id="sectionSkills" class="row soft-skills-section">
+  <ul class="techList">
+    <li id="creativity">Creativity</li>
+    <li id="seo"> SEO </li>
+    <li id="sem"> SEM </li>
+    <li id="entrepreneurship"> Entrepreneurship </li>
+    <li id="accessibility"> Accessibility</li>
+    <li id="web-standards"> Web standards</li>
+    <li id="analytics"> Analytics </li>
+    <li id="marketing"> Marketing </li>
+  </ul>
+</div>
 
 <!--Skills Section-->
-<div class="row">
-  <div class="skills-section" ng-controller="SkillsCtrl as skills">
+<div class="row skills-section">
+  <div ng-controller="SkillsCtrl as skills">
     <div ng-include="'views/skills.html'"></div>
   </div>
 </div>
 
 <!-- Work experience and education section-->
 <div class="row">
-  <div class="work-experience-section">
+  <div id="sectionWorkExperience" class="work-experience-section">
     <div ng-include="'views/workexperience.html'"></div>
   </div>
-  <div class="education-section">
+  <div id="sectionEducation" class="education-section">
     <div ng-include="'views/education.html'"></div>
+  </div>
+  <div class="certificates-section">
+    <div ng-include="'views/certificates.html'"></div>
   </div>
 </div>
 
-
 <!--Go to form section-->
 
-<div class="row">
-  <div class="row user-profile-section">
-    <button class="btn btn-default col-lg-5 col-md-5 col-sm-12 col-xs-12" ng-click="main.showRecruiterForm()"> Recruiters </button>
-    <button class="btn btn-default col-lg-5 col-md-5 col-sm-12 col-xs-12" ng-click="main.showNormalForm()"> Others </button>
+<div id="sectionContact" class="row user-profile-section">
+  <h2 align="center"> Get Started </h2>
+  <div class="buttons-group">
+    <div class="button-recruiters-section col-lg-5 col-md-5 col-sm-12 col-xs-12">
+      <button class="btn btn-default button-recruiters" ng-click="main.showRecruiterForm() && main.hideNormalForm()"> Recruiters </button>
+      <button ng-if="main.recruiterForm && main.showForm" class="btn btn-default button-remove" ng-click="main.hideRecruiterForm()"><i class="glyphicon glyphicon-remove"></i></button>
+    </div>
+    <div class="button-recruiters-section col-lg-5 col-md-5 col-sm-12 col-xs-12">
+      <button class="btn btn-default button-others" ng-click="main.showNormalForm() && main.hideRecruiterForm()"> Others </button>
+      <button ng-if="!main.recruiterForm && main.showForm" class="btn btn-default button-remove" ng-click="main.hideNormalForm()"><i class="glyphicon glyphicon-remove"></i></button>
+    </div>
   </div>
-  <div ng-include="'/views/contact.html'"></div>
+  <div class="section-contact-forms" ng-include="'/views/contact.html'"></div>
 </div>
 

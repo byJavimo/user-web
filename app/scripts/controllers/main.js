@@ -9,27 +9,16 @@
  */
 angular.module('personalWebApp')
   .run(['$anchorScroll', function($anchorScroll) {
-    $anchorScroll.yOffset = 50;   // always scroll by 50 extra pixels
   }])
-  .controller('MainCtrl', [ '$anchorScroll','$location', function ($anchorScroll, $location) {
+  .controller('MainCtrl', [ '$anchorScroll', function ($anchorScroll) {
 
     //Constants
-    this.showRecruiterForm = false;
-    this.showNormalForm = false;
+    this.recruiterForm = false;
     this.showForm = false;
     //Exposed methods
 
-    this.goToAnchor = function (sectionNumber) {
-      var newHash = 'section' + sectionNumber;
-      if ($location.hash() !== newHash) {
-        // set the $location.hash to `newHash` and
-        // $anchorScroll will automatically scroll to it
-        $location.hash('section' + sectionNumber);
-      } else {
-        // call $anchorScroll() explicitly,
-        // since $location.hash hasn't changed
-        $anchorScroll();
-      }
+    this.goToAnchor = function (sectionName) {
+      $anchorScroll('section' + sectionName);
     };
 
     // this.visitorName = prompt();
@@ -37,18 +26,23 @@ angular.module('personalWebApp')
     // Redirection methods
 
     this.showRecruiterForm = function(){
+      this.recruiterForm = true;
       this.showForm = true;
-      this.showRecruiterForm = true;
     };
 
     this.showNormalForm = function () {
+      this.recruiterForm = false;
       this.showForm = true;
-      this.showRecruiterForm = false;
     };
 
-    this.hideForm = function () {
+    this.hideRecruiterForm = function () {
+      this.recruiterForm = false;
       this.showForm = false;
-      console.log("Hello", this.showForm);
+    };
+
+    this.hideNormalForm = function () {
+      this.recruiterForm = true;
+      this.showForm = false;
     };
 
   }]);
