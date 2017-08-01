@@ -1,6 +1,6 @@
 <div ng-if="main.showForm" ng-switch="main.recruiterForm" class="contact-form">
   <!-- Other-->
-  <form ng-switch-when="false" mailto:javier.mora.alcazar@gmail.com method="post" enctype="multipart/form-data"  class="container">
+  <form ng-switch-when="false" action="../../server/sendOther.php" method="post" enctype="multipart/form-data"  class="container">
     <div class="form-group">
       <label for="otherName">Name</label>
       <input type="email" class="form-control" id="otherName" placeholder="Name">
@@ -19,13 +19,13 @@
     </div>
     <div class="form-group">
       <label for="otherDescription"></label>
-      <input type="text" class="form-control" id="otherDescription" placeholder="">
+      <textarea type="text" class="form-control" id="otherDescription" placeholder="Type your message"></textarea>
     </div>
     <div type="submit" class="btn btn-lg btn-default form-button">Submit</div>
     <div class="btn btn-lg btn-danger form-button" ng-click="main.hideNormalForm()()"> Cancel </div>
   </form>
   <!-- Recruiter form -->
-  <form ng-switch-when="true" mailto:javier.mora.alcazar@gmail.com method="post" enctype="multipart/form-data" class="container">
+  <form ng-switch-when="true" action="../../server/send.php" method="post" enctype="multipart/form-data" class="container">
     <div class="form-group">
       <label for="recruiterName">Name</label>
       <input type="email" class="form-control" id="recruiterName" placeholder="Name">
